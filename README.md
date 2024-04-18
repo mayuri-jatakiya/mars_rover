@@ -58,3 +58,13 @@ To use the Mars Rover Control System, follow these steps:
 1. Tests for the `Movement` class are located in the `tests` directory.
 2. Run PHPUnit tests:
    php vendor/bin/phpunit tests
+3. Below test cases are covered.
+   1. Test the scenario given in practical example.
+   2. Test the scenario for single rover in rectangle plateau.
+   3. Test the scenario for two rovers in square plateau.
+   4. Test the scenario for three rovers in rectangle plateau.
+   5. Test the scenario when rover is instructed to go out of grid.
+   6. Test the scenario when rover is instructed invalid direction that is other than R and L.
+   7. Test the scenario when rover is given invalid input for move that is other than M.
+   8. Test the scenario when rover is given invalid input with extra spaces.
+   9. Test the scenario when rover is given invalid input with no spaces.
