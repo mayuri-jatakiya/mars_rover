@@ -10,7 +10,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario given in practical example.
     public function testExecuteInstructions() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -29,7 +29,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario for single rover in rectangle plateau.
     public function testSingleRoverInstructions() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -48,7 +48,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario for two rovers in square plateau.
     public function testTwoRoverInstructions() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -67,7 +67,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario for three rovers in rectangle plateau.
     public function testThreeRoverInstructions() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -86,7 +86,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario when rover is instructed to go out of grid.
     public function testRoverOutOfGrid() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -105,7 +105,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario when rover is instructed invalid direction that is other than R and L.
     public function testRoverInvalidDirection() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -123,7 +123,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario when rover is given invalid input for move that is other than M.
     public function testRoverInvalidMove() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -141,7 +141,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario when rover is given invalid input with extra spaces.
     public function testRoverInvalidSpace() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -159,7 +159,7 @@ class RoverMovementTest extends TestCase
 
     //Test the scenario when rover is given invalid input with no spaces.
     public function testRoverNoSpace() {
-        // Pass the Plateau instance to the Movement constructor
+
         $movement = new Movement();
 
         // Test input string
@@ -173,6 +173,42 @@ class RoverMovementTest extends TestCase
 
         // Execute the instructions
         $output = $movement->executeInstructions($input);
+    }
+
+    //Test the scenario when rover conflicts.
+    public function testRoverConflicts()
+    {
+        $movement = new Movement();
+
+        // Test input string with conflicting rovers
+        $input = "5 5\n1 2 N\nMMML\n1 4 N\nML";
+
+        // Expected exception
+        $expectedException = \InvalidArgumentException::class;
+
+        // Expect a RuntimeException due to rover conflicts
+        $this->expectException($expectedException);
+
+        // Execute the instructions
+        $movement->executeInstructions($input);
+    }
+
+    //Test the scenario for rover input case sensitive.
+    public function testRoverInputCaseSensitive() {
+
+        $movement = new Movement();
+
+        // Test input string
+        $input = "7 7\n4 3 s\nlmlmllm\n5 3 E\nrmmrmm";
+
+        // Expected output string
+        $expectedOutput = ['5 3 S','3 1 W'];
+
+        // Execute the instructions
+        $output = $movement->executeInstructions($input);
+
+        // Assert that the output matches the expected output
+        $this->assertEquals($expectedOutput, $output);
     }
 
 }

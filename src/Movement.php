@@ -10,6 +10,9 @@ class Movement
 
     public function executeInstructions(string $input): array
     {
+        // Convert the input string to lowercase
+        $input = strtoupper($input);
+
         $lines = explode("\n", $input);
 
         if (count($lines) < 3 || count($lines) % 2 !== 1) {
@@ -51,6 +54,21 @@ class Movement
             $this->output[] = implode('', explode(',', $rover->getPosition()));
         }
 
+        // Check for conflicts between rovers
+        if ($this->hasRoverConflicts($this->output)) {
+            throw new \InvalidArgumentException("Rover conflicts detected. Two or more rovers are standing at the same position.");
+        }
+
         return $this->output;
     }
+
+    private function hasRoverConflicts(array $positions): bool
+    {
+        // Count occurrences of each position
+        $positionCounts = array_count_values($positions);
+
+        // If any position occurs more than once, there are conflicts
+        return max($positionCounts) > 1;
+    }
 }
+

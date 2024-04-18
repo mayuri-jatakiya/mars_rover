@@ -68,3 +68,5 @@ To use the Mars Rover Control System, follow these steps:
    7. Test the scenario when rover is given invalid input for move that is other than M.
    8. Test the scenario when rover is given invalid input with extra spaces.
    9. Test the scenario when rover is given invalid input with no spaces.
+   10. Test the scenario when rover conflicts.
+   11. Test the scenario for rover input case sensitive.
