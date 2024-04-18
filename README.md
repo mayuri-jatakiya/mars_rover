@@ -42,7 +42,7 @@ Example Output:
 To use the Mars Rover Control System, follow these steps:
 
 1. Clone the repository to your local machine:
-   git clone <repository_URL>
+   git clone https://github.com/mayuri-jatakiya/mars_rover.git
 2. Navigate to the project directory:
    cd mars_rover
 3. Install dependencies using Composer:
